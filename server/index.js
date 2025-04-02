@@ -16,11 +16,10 @@ mongoose.connect(process.env.MONGO)
     console.log(error)
 })
 
-//user route
-app.use('/api/v1/user',route);
+app.use(express.json());  // ✅ Parse JSON before handling requests
+app.use(cors());  // (Optional) Enable CORS if needed
 
-
-app.use(express.json());
+app.use('/api/v1/user', route);  // ✅ Now routes can access req.body
 
 app.listen(3000,()=>{
     console.log("server is running on port 3000");
