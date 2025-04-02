@@ -2,6 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import cors from'cors'
 import dotenv from 'dotenv'
+import route from './route/user.route.js';
 
 dotenv.config();
 const app = express();
@@ -15,6 +16,8 @@ mongoose.connect(process.env.MONGO)
     console.log(error)
 })
 
+//user route
+app.use('/api/v1/user',route);
 
 
 app.use(express.json());
