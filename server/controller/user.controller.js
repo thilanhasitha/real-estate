@@ -1,5 +1,6 @@
 import bcryptjs from 'bcryptjs';
 import User from '../model/user.model.js';
+import { errorHandler } from '../utils/error.js';
 
 export const getAllUsers = (req, res, next) => {
     try {
@@ -26,7 +27,7 @@ export const addUsers = async(req,res,next)=>{
     }
     catch(error){
         res.status(400)
-        next(error);
+        next(errorHandler(550,'error from the function'));
     }
 };
 
